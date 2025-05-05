@@ -2,6 +2,13 @@
 
 A modern e-commerce product listing platform built with Next.js, featuring advanced filtering, sorting, and authentication capabilities.
 
+## Live link : https://nxt-plp.vercel.app
+
+credentials :
+email : user@nxtwave.com
+password : user@123
+    
+
 ## SEO Performance
 
 Our application achieves excellent SEO performance with a score of 92/100 as shown in the Lighthouse audit:
