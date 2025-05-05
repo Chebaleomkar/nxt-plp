@@ -1,12 +1,13 @@
 // Footer.tsx
 import Link from "next/link";
 import Image from "next/image";
-import { Instagram,Linkedin} from "lucide-react";
+import { Instagram, Linkedin } from "lucide-react";
+import Accordion from "./ui/accordion";
 
 const Footer = () => {
     return (
         <footer className="bg-black text-white px-4 md:px-16 py-10">
-            <div className="flex items-center w-full justify-between ">
+            <div className="flex flex-col md:flex-row items-start md:items-center w-full justify-between gap-6 md:gap-0">
                 {/* Subscribe section */}
                 <div>
                     <h4 className="font-bold text-sm mb-2">BE THE FIRST TO KNOW</h4>
@@ -37,10 +38,12 @@ const Footer = () => {
                     </p>
                 </div>
             </div>
-        <hr className="mt-3 mb-3" />
-            <div className="flex items-center justify-between">
+            <hr className="mt-6 mb-6" />
+
+            {/* Desktop view */}
+            <div className="hidden md:flex items-start justify-between">
                 <div>
-                    <h4 className="font-bold ">mettā muse</h4>
+                    <h4 className="font-bold">mettā muse</h4>
                     <ul className="space-y-1 text-xs">
                         <li className="py-1"><Link href="#">About Us</Link></li>
                         <li className="py-1"><Link href="#">Stories</Link></li>
@@ -53,7 +56,7 @@ const Footer = () => {
 
                 <div>
                     <h4 className="font-bold text-sm mb-2">QUICK LINKS</h4>
-                    <ul className="space-y-1 text-xs ">
+                    <ul className="space-y-1 text-xs">
                         <li className="py-1"><Link href="#">Orders & Shipping</Link></li>
                         <li className="py-1"><Link href="#">Join/Login as a Seller</Link></li>
                         <li className="py-1"><Link href="#">Payment & Pricing</Link></li>
@@ -64,13 +67,12 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                <div className="flex flex-col gap-20  items-start ">
-
-                    <div className="flex  flex-col items-center gap-4 text-white text-xl">
+                <div className="flex flex-col gap-20 items-start">
+                    <div className="flex flex-col items-center gap-4 text-white text-xl">
                         <span className="font-bold">Follow Us</span>
                         <div className="flex gap-3">
                             <Link className="border-2 rounded-full p-1" href="#"><Instagram size={20} /></Link>
-                            <Link  className="border-2 rounded-full p-1" href="#"><Linkedin size={20} /></Link>
+                            <Link className="border-2 rounded-full p-1" href="#"><Linkedin size={20} /></Link>
                         </div>
                     </div>
 
@@ -119,13 +121,94 @@ const Footer = () => {
                         />
                     </div>
                 </div>
+            </div>
 
-                
+            {/* Mobile view with accordions */}
+            <div className="md:hidden space-y-4">
+                <Accordion title="mettā muse">
+                    <ul className="space-y-1 text-xs pb-4">
+                        <li className="py-1"><Link href="#">About Us</Link></li>
+                        <li className="py-1"><Link href="#">Stories</Link></li>
+                        <li className="py-1"><Link href="#">Artisans</Link></li>
+                        <li className="py-1"><Link href="#">Boutiques</Link></li>
+                        <li className="py-1"><Link href="#">Contact Us</Link></li>
+                        <li className="py-1"><Link href="#">EU Compliances Docs</Link></li>
+                    </ul>
+                </Accordion>
+
+                <Accordion title="QUICK LINKS">
+                    <ul className="space-y-1 text-xs pb-4">
+                        <li className="py-1"><Link href="#">Orders & Shipping</Link></li>
+                        <li className="py-1"><Link href="#">Join/Login as a Seller</Link></li>
+                        <li className="py-1"><Link href="#">Payment & Pricing</Link></li>
+                        <li className="py-1"><Link href="#">Return & Refunds</Link></li>
+                        <li className="py-1"><Link href="#">FAQs</Link></li>
+                        <li className="py-1"><Link href="#">Privacy Policy</Link></li>
+                        <li className="py-1"><Link href="#">Terms & Conditions</Link></li>
+                    </ul>
+                </Accordion>
+
+                <Accordion title="FOLLOW US">
+                <div className="flex flex-col items-center gap-4 text-white text-xl">
+                        <span className="font-bold">Follow Us</span>
+                        <div className="flex gap-3">
+                            <Link className="border-2 rounded-full p-1" href="#"><Instagram size={20} /></Link>
+                            <Link className="border-2 rounded-full p-1" href="#"><Linkedin size={20} /></Link>
+                        </div>
+                    </div>
+                </Accordion>
+
+                <div className="space-y-6 py-4">
+                    <div className="flex flex-wrap items-center gap-4 justify-center">
+                        <Image 
+                            src="https://play-lh.googleusercontent.com/HArtbyi53u0jnqhnnxkQnMx9dHOERNcprZyKnInd2nrfM7Wd9ivMNTiz7IJP6-mSpwk"
+                            alt="Google Pay"
+                            width={40}
+                            height={24}
+                            className="object-contain"
+                        />
+                        <Image 
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD7oa6-WXok1YXYt8GN4CWbzJOpeBf69159Q&s"
+                            alt="Mastercard"
+                            width={40}
+                            height={24}
+                            className="object-contain"
+                        />
+                        <Image 
+                            src="https://cdn.pixabay.com/photo/2018/05/08/21/29/paypal-3384015_1280.png"
+                            alt="PayPal"
+                            width={40}
+                            height={24}
+                            className="object-contain"
+                        />
+                        <Image 
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZpywg_J2dLATjgisBcj2Pxmta-m0lNyHHCg&s"
+                            alt="American Express"
+                            width={40}
+                            height={24}
+                            className="object-contain"
+                        />
+                        <Image 
+                            src="https://developer.apple.com/news/images/og/apple-pay-og-twitter.jpg"
+                            alt="Apple Pay"
+                            width={40}
+                            height={24}
+                            className="object-contain"
+                        />
+                        <Image 
+                            src="https://a.storyblok.com/f/162198/2400x1440/0942c18c8a/shoppay.jpg/m/1600x0/filters:quality(50)"
+                            alt="Shop Pay"
+                            width={40}
+                            height={24}
+                            className="object-contain"
+                        />
+                    </div>
+                </div>
             </div>
 
             {/* Copyright */}
             <p className="text-xs text-center text-gray-400 mt-6">
-                Copyright © 2023 mettamuse. All rights reserved.
+                Copyright © {new Date().getFullYear()} nextWave-plp. All rights reserved.
             </p>
         </footer>
     );

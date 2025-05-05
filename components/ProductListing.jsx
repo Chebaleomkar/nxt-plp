@@ -10,14 +10,28 @@ import ProductCard from "../components/ProductCard";
 import useProducts from "../hooks/useProducts"; 
 import Loader from "../components/Loader";
 import { Button } from "../components/ui/button";
+import useSortStore from '../store/useSortStore';
 
 const ProductListing = () => {
   const [showFilter, setShowFilter] = useState(true);
   const [showMobileFilter, setShowMobileFilter] = useState(false);
   const { products, loading, error } = useProducts();
+  const { sortOrder } = useSortStore();
 
   if (loading) return <Loader text="Fetching awesome products..." />;
   if (error) return <div className="p-4 text-red-500">{error}</div>;
+
+  // Sort products based on sortOrder
+  const sortedProducts = [...products].sort((a, b) => {
+    switch (sortOrder) {
+      case 'price_low':
+        return a.price - b.price;
+      case 'price_high':
+        return b.price - a.price;
+      default:
+        return 0; // Keep original order for 'recommended'
+    }
+  });
 
   return (
     <div className="w-full px-4 md:px-10 py-4">
@@ -60,7 +74,7 @@ const ProductListing = () => {
               showFilter ? "md:grid-cols-3 lg:grid-cols-3" : "md:grid-cols-4 lg:grid-cols-4"
             } gap-4`}
           >
-            {products.map((product) => (
+            {sortedProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>

@@ -20,7 +20,8 @@ export async function POST(req) {
     }
 
     // Check if password matches
-    const isMatch = await user.matchPassword(password);
+    const isMatch = await user.matchPass
+    word(password);
 
     if (!isMatch) {
       return NextResponse.json(

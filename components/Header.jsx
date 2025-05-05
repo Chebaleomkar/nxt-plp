@@ -1,6 +1,7 @@
 "use client"
+import Link from 'next/link'
 import React from 'react'
-import { Heart, Menu, Search, ShoppingBag, X } from 'lucide-react'
+import { Heart, Menu, Search, ShoppingBag, Smile, X } from 'lucide-react'
 import UserProfile from '../components/UserProfile'
 const Header = () => {
     const [menuOpen, setMenuOpen] = React.useState(false)
@@ -17,6 +18,7 @@ const Header = () => {
             {/* Main Header */}
             <div className="flex items-center justify-between px-4 md:px-10 py-4">
                 {/* Left: Menu toggle + Logo */}
+
                 <div className="flex items-center space-x-4">
                     {/* Mobile Menu Icon */}
                     <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
@@ -24,7 +26,7 @@ const Header = () => {
                     </button>
 
                     {/* Logo */}
-                    <div className="text-xl font-bold tracking-wider">LOGO</div>
+                    <div className="text-xl font-bold tracking-wider"> <Link href="/" > nxtWave-plp </Link></div>
                 </div>
 
                 {/* Center: Menu (hidden on small devices) */}

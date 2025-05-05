@@ -1,11 +1,11 @@
-'use client';
+"use client"
 import { useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useUser } from '../hooks/useUser';
-import Link from 'next/link';
 import { Mail, Lock, ArrowRight } from 'lucide-react';
 
-export default function SignupForm() {
+const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -17,7 +17,7 @@ export default function SignupForm() {
         setError('');
 
         try {
-            const res = await fetch('/auth/signup', {
+            const res = await fetch('/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password }),
@@ -26,7 +26,7 @@ export default function SignupForm() {
             const data = await res.json();
 
             if (!res.ok) {
-                throw new Error(data.error || 'Signup failed');
+                throw new Error(data.error || 'Login failed');
             }
 
             login(data);
@@ -35,21 +35,20 @@ export default function SignupForm() {
             setError(err.message);
         }
     };
-
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-indigo-100 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-md w-full space-y-8 bg-white rounded-xl shadow-xl p-8">
                 <div>
-                    <h2 className="text-center text-3xl font-extrabold text-gray-900">
-                        Create your account
+                    <h2 className="mt-2 text-center text-3xl font-extrabold text-gray-900">
+                        Welcome back
                     </h2>
                     <p className="mt-2 text-center text-sm text-gray-600">
-                        Already have an account?{' '}
+                        Don&apos;t have an account?{' '}
                         <Link
-                            href="/login"
+                            href="/signup"
                             className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-200"
                         >
-                            Sign in
+                            Sign up
                         </Link>
                     </p>
                 </div>
@@ -63,7 +62,7 @@ export default function SignupForm() {
                                 required
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="rounded-lg w-full pl-12 pr-4 py-3 border border-gray-300 placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-150 sm:text-sm"
+                                className="appearance-none rounded-lg w-full pl-12 pr-4 py-3 border border-gray-300 placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-150 sm:text-sm"
                                 placeholder="Email address"
                             />
                         </div>
@@ -74,7 +73,7 @@ export default function SignupForm() {
                                 required
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="rounded-lg w-full pl-12 pr-4 py-3 border border-gray-300 placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-150 sm:text-sm"
+                                className="appearance-none rounded-lg w-full pl-12 pr-4 py-3 border border-gray-300 placeholder-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-150 sm:text-sm"
                                 placeholder="Password"
                             />
                         </div>
@@ -90,14 +89,16 @@ export default function SignupForm() {
                             className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 shadow-md hover:shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
                             <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                                <ArrowRight className="h-5 w-5 text-white group-hover:text-indigo-200 transition" />
+                                <ArrowRight size="20" className="text-white group-hover:text-indigo-200 transition" />
                             </span>
-                            Create Account
+                            Log in
                         </button>
                     </div>
                 </form>
             </div>
         </div>
 
-    );
+    )
 }
+
+export default LoginForm
