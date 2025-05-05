@@ -2,7 +2,7 @@
 
 A modern e-commerce product listing application , featuring user authentication, product filtering, and responsive design.
 
-Live Link: [Visit the App](https://nxt-plp.vercel.app)
+Live Link: [Visit the App](https://nxt-plp.vercel.app/)
 
 ### Demo Credentials
 - **Email:** user@nxtWave.com
