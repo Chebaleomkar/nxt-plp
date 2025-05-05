@@ -9,28 +9,23 @@ export async function POST(req) {
     
     const { email, password } = await req.json();
 
-    // Check if user exists
     const user = await User.findOne({ email }).select('+password');
     
     if (!user) {
       return NextResponse.json(
-        { error: 'Invalid credentials' },
+        { error: 'User not found .' },
         { status: 401 }
       );
     }
 
-    // Check if password matches
-    const isMatch = await user.matchPass
-    word(password);
+    const isMatch = await user.matchPassword(password);
 
     if (!isMatch) {
       return NextResponse.json(
-        { error: 'Invalid credentials' },
+        { error: 'Password is incorrect.' },
         { status: 401 }
       );
     }
-
-    // Create response without password
     const userResponse = {
       id: user._id,
       email: user.email

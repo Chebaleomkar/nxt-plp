@@ -8,8 +8,6 @@ export const useUser = () => {
   const router = useRouter();
 
   useEffect(() => {
-    // Check localStorage for user data
-    if (typeof window !== 'undefined') {
       const token = localStorage.getItem('token');
       const userEmail = localStorage.getItem('userEmail');
 
@@ -17,7 +15,6 @@ export const useUser = () => {
         setUser({ email: userEmail, token });
       }
       setLoading(false);
-    }
   }, []);
 
   const login = (userData) => {

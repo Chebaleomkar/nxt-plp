@@ -49,7 +49,7 @@ export default function SignupForm() {
                             href="/login"
                             className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-200"
                         >
-                            Sign in
+                            Log in
                         </Link>
                     </p>
                 </div>
